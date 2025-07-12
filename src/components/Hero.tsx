@@ -69,14 +69,14 @@ const Hero: React.FC = () => {
           <div className="space-y-12">
             {/* Main Title */}
             <div className="space-y-8">
-              <h1 className="text-5xl md:text-7xl font-black text-white leading-tight">
+              <h1 className="text-5xl md:text-7xl font-black leading-tight">
                 {displayText.includes("Dhananjay Kharat") ? (
                   <>
-                    {displayText.split("Dhananjay Kharat")[0]}
-                    <span className="three-d-floating">Dhananjay Kharat</span>
+                    <span className="colorful-glow">{displayText.split("Dhananjay Kharat")[0]}</span>
+                    <span className="colorful-glow">Dhananjay Kharat</span>
                   </>
                 ) : (
-                  displayText
+                  <span className="colorful-glow">{displayText}</span>
                 )}
                 <span className="animate-pulse text-orange-500">|</span>
               </h1>
