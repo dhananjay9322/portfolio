@@ -169,12 +169,24 @@ html {
 
 /* Enhanced gradient text */
 .gradient-text {
-  background: linear-gradient(45deg, #f97316, #ef4444, #8b5cf6, #06b6d4);
-  background-size: 300% 300%;
+  background: linear-gradient(90deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #38f9d7, #ff6a00);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradient-shift 3s ease infinite;
+  color: transparent;
+  animation: gradient-move 3s ease-in-out infinite;
+}
+
+/* Colorful animated gradient text for name only */
+.gradient-text {
+  background: linear-gradient(90deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #38f9d7, #ff6a00);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-move 3s ease-in-out infinite;
 }
 
 /* Glowing border effect */
@@ -364,4 +376,20 @@ html {
     0 0 8px #ff6a00,
     0 0 16px #ee0979,
     0 0 24px #00c3ff;
+}
+
+.glow-text {
+  color: #fff;
+  text-shadow: 0 0 12px #fff, 0 0 24px #fff;
+}
+
+.gradient-glow-text {
+  background: linear-gradient(90deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #38f9d7, #ff6a00);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-move 3s ease-in-out infinite;
+  text-shadow: 0 2px 8px #fff8, 0 0 12px #ff6a0044;
 }

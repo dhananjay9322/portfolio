@@ -72,11 +72,11 @@ const Hero: React.FC = () => {
               <h1 className="text-5xl md:text-7xl font-black leading-tight">
                 {displayText.includes("Dhananjay Kharat") ? (
                   <>
-                    <span className="colorful-glow">{displayText.split("Dhananjay Kharat")[0]}</span>
-                    <span className="colorful-glow">Dhananjay Kharat</span>
+                    <span className="neon-text">{displayText.split("Dhananjay Kharat")[0]}</span>
+                    <span className="gradient-text">Dhananjay Kharat</span>
                   </>
                 ) : (
-                  <span className="colorful-glow">{displayText}</span>
+                  <span className="neon-text">{displayText}</span>
                 )}
               </h1>
 
