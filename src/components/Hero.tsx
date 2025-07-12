@@ -78,7 +78,6 @@ const Hero: React.FC = () => {
                 ) : (
                   <span className="colorful-glow">{displayText}</span>
                 )}
-                <span className="animate-pulse text-orange-500">|</span>
               </h1>
 
               {/* Role Cards */}

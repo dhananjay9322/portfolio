@@ -357,7 +357,7 @@ html {
   }
 }
 
-/* Colorful glowing effect for name and greeting */
+/* Simplified colorful glowing effect for name and greeting */
 .colorful-glow {
   background: linear-gradient(90deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #38f9d7, #ff6a00);
   background-size: 200% 200%;
@@ -367,9 +367,5 @@ html {
   color: transparent;
   display: inline-block;
   animation: gradient-move 3s ease-in-out infinite;
-  text-shadow:
-    0 0 8px #fff,
-    0 0 16px #ff6a00,
-    0 0 32px #ee0979,
-    0 0 48px #00c3ff;
+  text-shadow: 0 0 8px #fff7, 0 0 16px #ff6a00aa;
 }
