@@ -357,15 +357,11 @@ html {
   }
 }
 
-/* Simplified colorful glowing effect for name and greeting */
-.colorful-glow {
-  background: linear-gradient(90deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #38f9d7, #ff6a00);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  display: inline-block;
-  animation: gradient-move 3s ease-in-out infinite;
-  text-shadow: 0 0 8px #fff7, 0 0 16px #ff6a00aa;
+/* Soft neon glow effect for hero name and greeting */
+.neon-text {
+  color: #fff;
+  text-shadow:
+    0 0 8px #ff6a00,
+    0 0 16px #ee0979,
+    0 0 24px #00c3ff;
 }
