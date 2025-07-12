@@ -70,7 +70,14 @@ const Hero: React.FC = () => {
             {/* Main Title */}
             <div className="space-y-8">
               <h1 className="text-5xl md:text-7xl font-black text-white leading-tight">
-                {displayText}
+                {displayText.includes("Dhananjay Kharat") ? (
+                  <>
+                    {displayText.split("Dhananjay Kharat")[0]}
+                    <span className="three-d-floating">Dhananjay Kharat</span>
+                  </>
+                ) : (
+                  displayText
+                )}
                 <span className="animate-pulse text-orange-500">|</span>
               </h1>
 
