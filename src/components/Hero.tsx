@@ -196,7 +196,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Right Profile Image */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end self-start -mt-12">
             <div className="relative">
               {/* Animated rings */}
               <div className="absolute inset-0 rounded-full">
