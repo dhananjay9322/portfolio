@@ -139,11 +139,11 @@ const Hero: React.FC = () => {
                     <span className="text-gray-300 group-hover:text-white font-medium">kkharatdhananjay@gmail.com</span>
                   </a>
                   <a
-                    href="tel:932230000"
+                    href="tel:9322339303"
                     className="flex items-center space-x-3 p-4 bg-gray-800/50 backdrop-blur-sm rounded-xl hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-cyan-500/20 transition-all duration-300 hover:scale-105 group border border-gray-700 hover:border-blue-500/50"
                   >
                     <Phone className="w-6 h-6 text-blue-500 group-hover:text-blue-400 group-hover:animate-bounce" />
-                    <span className="text-gray-300 group-hover:text-white font-medium">932230000</span>
+                    <span className="text-gray-300 group-hover:text-white font-medium">9322339303</span>
                   </a>
                 </div>
               </div>
