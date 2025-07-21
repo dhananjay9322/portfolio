@@ -26,14 +26,14 @@ const Hero: React.FC = () => {
     // Find the indices for Dhananjay and Kharat
     const dhanaIdx = displayText.indexOf('Dhananjay');
     const kharatIdx = displayText.indexOf('Kharat');
-    if (dhanaIdx === -1) return <span className="neon-glow">{displayText}</span>;
+    if (dhanaIdx === -1) return <span>{displayText}</span>;
     const before = displayText.slice(0, dhanaIdx);
     const dhana = displayText.slice(dhanaIdx, dhanaIdx + 9);
     const afterDhana = displayText.slice(dhanaIdx + 9, kharatIdx);
     const kharat = displayText.slice(kharatIdx, kharatIdx + 6);
     const after = displayText.slice(kharatIdx + 6);
     return (
-      <span className="neon-glow">
+      <span>
         {before}
         <span className="gradient-orange-pink font-extrabold">{dhana}</span>
         {afterDhana}
@@ -125,7 +125,7 @@ const Hero: React.FC = () => {
 
           {/* Right: Profile Image */}
           <div className="flex-1 flex justify-center md:justify-end items-start md:items-start mb-8 md:mb-0">
-            <div className="relative profile-img-container md:-mt-12">
+            <div className="relative profile-img-container profile-img-lower md:mt-8">
               <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-orange-500 via-blue-500 to-purple-500 p-1 shadow-2xl profile-img">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gray-900">
                   <img
@@ -175,13 +175,6 @@ const Hero: React.FC = () => {
           color: transparent;
           -webkit-text-fill-color: transparent;
         }
-        .neon-glow {
-          text-shadow:
-            0 0 8px #fff,
-            0 0 16px #00eaff,
-            0 0 24px #ff6a00,
-            0 0 32px #ee0979;
-        }
         .typing-cursor {
           display: inline-block;
           color: #fff;
@@ -199,18 +192,27 @@ const Hero: React.FC = () => {
           align-items: flex-start;
           justify-content: center;
         }
+        .profile-img-lower {
+          margin-top: 2.5rem;
+        }
         @media (min-width: 768px) {
           .profile-img-container {
             align-items: flex-start;
           }
           .profile-img {
-            margin-top: -3rem;
+            margin-top: 0;
+          }
+          .profile-img-lower {
+            margin-top: 4.5rem;
           }
         }
         @media (max-width: 767px) {
           .profile-img {
             margin-top: 2rem;
             margin-bottom: 0;
+          }
+          .profile-img-lower {
+            margin-top: 2.5rem;
           }
         }
       `}</style>
