@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const line1 = 'Initializing JARVIS Protocol...';
-const line2 = 'Access Granted. Welcome to my portfolio.';
+// The second line of text displayed on screen
+const onScreenLine2 = 'Access Granted. Welcome to my portfolio.';
+// The sentence to be spoken by the Web Speech API
+const spokenLine = "Hello, I'm Dhananjay. Welcome to My Portfolio.";
 const typeSpeed = 38;
 const line2Delay = 2000;
 const totalDuration = 4700;
@@ -13,9 +16,9 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   const [typingDone, setTypingDone] = useState(false);
   const [speechActive, setSpeechActive] = useState(false);
   const speechUtterance = useRef<SpeechSynthesisUtterance | null>(null);
-  const autoHideTimeout = useRef<NodeJS.Timeout | null>(null);
-  const typeTimeout = useRef<NodeJS.Timeout | null>(null);
-  const line2Timeout = useRef<NodeJS.Timeout | null>(null);
+  const autoHideTimeout = useRef<number | null>(null);
+  const typeTimeout = useRef<number | null>(null);
+  const line2Timeout = useRef<number | null>(null);
 
   // Prevent body scroll while intro is active
   useEffect(() => {
@@ -43,37 +46,64 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   // Speech synthesis
   useEffect(() => {
     if (showLine2) {
-      if ('speechSynthesis' in window) {
-        const synth = window.speechSynthesis;
-        let voices = synth.getVoices();
-        const speak = () => {
-          voices = synth.getVoices();
-          let voice = voices.find(v =>
-            v.lang.startsWith('en') &&
-            (v.name.toLowerCase().includes('robot') ||
-              v.name.toLowerCase().includes('zira') ||
-              v.name.toLowerCase().includes('fred') ||
-              v.name.toLowerCase().includes('google') ||
-              v.name.toLowerCase().includes('samantha') ||
-              v.name.toLowerCase().includes('daniel')
-            )
-          ) || voices.find(v => v.lang.startsWith('en'));
-          if (!voice) return;
-          speechUtterance.current = new window.SpeechSynthesisUtterance(line2);
-          speechUtterance.current.voice = voice;
-          speechUtterance.current.rate = 1.01;
-          speechUtterance.current.pitch = 0.92;
-          speechUtterance.current.volume = 1;
-          setSpeechActive(true);
-          synth.speak(speechUtterance.current);
-          speechUtterance.current.onend = () => setSpeechActive(false);
-        };
-        if (!voices.length) {
-          window.speechSynthesis.onvoiceschanged = speak;
-        } else {
-          speak();
-        }
+      if (!('speechSynthesis' in window)) {
+        console.warn('Web Speech API (speechSynthesis) is not supported in this browser.');
+        return;
       }
+
+      const synth = window.speechSynthesis;
+      let voices: SpeechSynthesisVoice[] = [];
+      let attempts = 0;
+
+      const speak = () => {
+        voices = synth.getVoices();
+        if (voices.length === 0 && attempts < 10) {
+          // Voices might not be loaded yet, wait and retry.
+          attempts++;
+          setTimeout(speak, 100);
+          return;
+        }
+
+        console.log('Available voices:', voices);
+
+        let voice = voices.find(v =>
+          v.lang.startsWith('en') &&
+          (v.name.toLowerCase().includes('robot') ||
+            v.name.toLowerCase().includes('google') ||
+            v.name.toLowerCase().includes('zira') ||
+            v.name.toLowerCase().includes('david') ||
+            v.name.toLowerCase().includes('mark') ||
+            v.name.toLowerCase().includes('daniel')
+          )
+        ) || voices.find(v => v.lang.startsWith('en-US')) || voices.find(v => v.lang.startsWith('en'));
+
+        if (!voice) {
+          console.warn('No suitable English voice found for speech synthesis.');
+          return;
+        }
+
+        console.log('Selected voice:', voice.name, `(${voice.lang})`);
+
+        speechUtterance.current = new window.SpeechSynthesisUtterance(spokenLine);
+        speechUtterance.current.voice = voice;
+        speechUtterance.current.rate = 1.0;
+        speechUtterance.current.pitch = 0.95;
+        speechUtterance.current.volume = 1;
+
+        speechUtterance.current.onstart = () => setSpeechActive(true);
+        speechUtterance.current.onend = () => setSpeechActive(false);
+        speechUtterance.current.onerror = (e) => {
+          console.error('Speech synthesis error:', e);
+          setSpeechActive(false);
+        };
+
+        synth.speak(speechUtterance.current);
+      };
+
+      // The 'onvoiceschanged' event is the recommended way to know when voices are ready.
+      synth.onvoiceschanged = speak;
+      // Also call speak directly in case the event has already fired.
+      speak();
     }
     // Cleanup
     return () => {
@@ -142,7 +172,7 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
             className="fade-in"
             style={{ opacity: showLine2 ? 1 : 0 }}
           >
-            {showLine2 ? line2 : ''}
+            {showLine2 ? onScreenLine2 : ''}
           </div>
         </div>
       </div>
