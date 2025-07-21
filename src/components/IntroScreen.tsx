@@ -4,7 +4,7 @@ const line1 = 'Initializing JARVIS Protocol...';
 // The second line of text displayed on screen
 const onScreenLine2 = 'Access Granted. Welcome to my portfolio.';
 // The sentence to be spoken by the Web Speech API
-const spokenLine = "Hello, I'm Dhananjay. Welcome to My Portfolio.";
+const spokenLine = 'Helloo, welcome to my portfolio';
 const typeSpeed = 38;
 const line2Delay = 2000;
 const totalDuration = 4700;
@@ -19,6 +19,7 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   const autoHideTimeout = useRef<number | null>(null);
   const typeTimeout = useRef<number | null>(null);
   const line2Timeout = useRef<number | null>(null);
+  const hasSpokenRef = useRef(false);
 
   // Prevent body scroll while intro is active
   useEffect(() => {
@@ -45,12 +46,16 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
 
   // Speech synthesis
   useEffect(() => {
-    if (showLine2) {
-      if (!('speechSynthesis' in window)) {
+    if (showLine2 && !hasSpokenRef.current) {
+      hasSpokenRef.current = true; // Prevent this effect from running again
+
+      if (!('speechSynthesis'in window)) {
         console.warn('Web Speech API (speechSynthesis) is not supported in this browser.');
         return;
       }
 
+      // On many mobile browsers, speech synthesis can only be initiated by a user gesture.
+      // This will likely fail silently on mobile page load, which is expected.
       const synth = window.speechSynthesis;
       let voices: SpeechSynthesisVoice[] = [];
       let attempts = 0;
@@ -58,7 +63,6 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
       const speak = () => {
         voices = synth.getVoices();
         if (voices.length === 0 && attempts < 10) {
-          // Voices might not be loaded yet, wait and retry.
           attempts++;
           setTimeout(speak, 100);
           return;
@@ -68,8 +72,7 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
 
         let voice = voices.find(v =>
           v.lang.startsWith('en') &&
-          (v.name.toLowerCase().includes('robot') ||
-            v.name.toLowerCase().includes('google') ||
+          (v.name.toLowerCase().includes('google') ||
             v.name.toLowerCase().includes('zira') ||
             v.name.toLowerCase().includes('david') ||
             v.name.toLowerCase().includes('mark') ||
@@ -87,7 +90,7 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
         speechUtterance.current = new window.SpeechSynthesisUtterance(spokenLine);
         speechUtterance.current.voice = voice;
         speechUtterance.current.rate = 1.0;
-        speechUtterance.current.pitch = 0.95;
+        speechUtterance.current.pitch = 1.0;
         speechUtterance.current.volume = 1;
 
         speechUtterance.current.onstart = () => setSpeechActive(true);
@@ -97,12 +100,12 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
           setSpeechActive(false);
         };
 
+        // Cancel any previous utterances before speaking
+        synth.cancel();
         synth.speak(speechUtterance.current);
       };
 
-      // The 'onvoiceschanged' event is the recommended way to know when voices are ready.
       synth.onvoiceschanged = speak;
-      // Also call speak directly in case the event has already fired.
       speak();
     }
     // Cleanup
