@@ -126,23 +126,6 @@ const Projects: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* GitHub Stats */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold text-white mb-8">
-            GitHub <span className="text-orange-500">Activity</span>
-          </h3>
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
-            <p className="text-gray-300 mb-4">GitHub Contributions Heatmap</p>
-            <div className="bg-gray-900 rounded-lg p-4">
-              <img
-                src="https://github-readme-stats.vercel.app/api?username=dhananjay9322&show_icons=true&theme=dark&bg_color=1a1a1a&text_color=ffffff&icon_color=f97316"
-                alt="GitHub Stats"
-                className="w-full max-w-md mx-auto"
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
