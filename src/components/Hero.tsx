@@ -64,21 +64,22 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-12 flex flex-col items-center lg:items-start">
-            {/* New Photo Above Name */}
-            <div className="w-48 h-64 rounded-2xl overflow-hidden shadow-2xl mb-6">
-              <img
-                src="/public/20250706_132407(1).jpg"
-                alt="Dhananjay Kharat"
-                className="w-full h-full object-cover"
-                style={{ objectPosition: 'top' }}
-              />
-            </div>
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+          {/* Left side: Photo */}
+          <div className="w-64 h-80 lg:w-72 lg:h-96 rounded-2xl overflow-hidden shadow-2xl flex-shrink-0 border-4 border-gray-700/50">
+            <img
+              src="/20250706_132407(1).jpg"
+              alt="Dhananjay Kharat"
+              className="w-full h-full object-cover"
+              style={{ objectPosition: 'top' }}
+            />
+          </div>
+
+          {/* Right side: Text content */}
+          <div className="space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Main Title */}
             <div className="space-y-8 w-full">
-              <h1 className="text-5xl md:text-7xl font-black leading-tight text-center lg:text-left">
+              <h1 className="text-5xl md:text-7xl font-black leading-tight">
                 {displayText.includes("Dhananjay Kharat") ? (
                   <>
                     <span className="neon-text">{displayText.split("Dhananjay Kharat")[0]}</span>
@@ -122,75 +123,8 @@ const Hero: React.FC = () => {
                   ))}
                 </div>
               )}
-
-              {/* Description */}
-              {showRoles && (
-                <div className="transform transition-all duration-1000 delay-1000 translate-y-0 opacity-100">
-                  <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed text-center lg:text-left">
-                    Passionate about <span className="text-orange-400 font-semibold">cloud technologies</span>, 
-                    <span className="text-blue-400 font-semibold"> containerization</span>, and building 
-                    <span className="text-purple-400 font-semibold"> scalable infrastructure</span>. 
-                    Currently pursuing B.Sc. (Hons) Computer Science.
-                  </p>
-                </div>
-              )}
-
-              {/* Contact Info */}
-              {showRoles && (
-                <div className="transform transition-all duration-1000 delay-1200 translate-y-0 opacity-100">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a
-                      href="mailto:kkharatdhananjay@gmail.com"
-                      className="flex items-center space-x-3 p-4 bg-gray-800/50 backdrop-blur-sm rounded-xl hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all duration-300 hover:scale-105 group border border-gray-700 hover:border-orange-500/50"
-                    >
-                      <Mail className="w-6 h-6 text-orange-500 group-hover:text-orange-400 group-hover:animate-bounce" />
-                      <span className="text-gray-300 group-hover:text-white font-medium">kkharatdhananjay@gmail.com</span>
-                    </a>
-                    <a
-                      href="tel:9322339303"
-                      className="flex items-center space-x-3 p-4 bg-gray-800/50 backdrop-blur-sm rounded-xl hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-cyan-500/20 transition-all duration-300 hover:scale-105 group border border-gray-700 hover:border-blue-500/50"
-                    >
-                      <Phone className="w-6 h-6 text-blue-500 group-hover:text-blue-400 group-hover:animate-bounce" />
-                      <span className="text-gray-300 group-hover:text-white font-medium">9322339303</span>
-                    </a>
-                  </div>
-                </div>
-              )}
-
-              {/* Social Links */}
-              {showRoles && (
-                <div className="transform transition-all duration-1000 delay-1400 translate-y-0 opacity-100">
-                  <div className="flex space-x-6 justify-center lg:justify-start">
-                    <a
-                      href="https://www.instagram.com/dhanu.kharat.45?igsh=MTU2b2owM29wdnRoMg"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-gray-800/50 backdrop-blur-sm rounded-full hover:bg-gradient-to-r hover:from-pink-500/20 hover:to-rose-500/20 transition-all duration-300 hover:scale-110 group border border-gray-700 hover:border-pink-500/50"
-                    >
-                      <Instagram className="w-7 h-7 text-gray-300 group-hover:text-pink-500 group-hover:animate-pulse" />
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/dhananjay-kharat-4844222a7"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-gray-800/50 backdrop-blur-sm rounded-full hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-blue-600/20 transition-all duration-300 hover:scale-110 group border border-gray-700 hover:border-blue-500/50"
-                    >
-                      <Linkedin className="w-7 h-7 text-gray-300 group-hover:text-blue-500 group-hover:animate-pulse" />
-                    </a>
-                    <a
-                      href="https://github.com/dhananjay9322"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-gray-800/50 backdrop-blur-sm rounded-full hover:bg-gradient-to-r hover:from-gray-500/20 hover:to-gray-600/20 transition-all duration-300 hover:scale-110 group border border-gray-700 hover:border-gray-500/50"
-                    >
-                      <Github className="w-7 h-7 text-gray-300 group-hover:text-white group-hover:animate-pulse" />
-                    </a>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
-          {/* Remove Right Side Old Photo */}
         </div>
       </div>
 
