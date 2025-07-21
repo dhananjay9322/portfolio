@@ -3,8 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 const line1 = 'Initializing JARVIS Protocol...';
 // The second line of text displayed on screen
 const onScreenLine2 = 'Access Granted. Welcome to my portfolio.';
-// The sentence to be spoken by the Web Speech API
-const spokenLine = 'Helloo, welcome to my portfolio';
 const typeSpeed = 38;
 const line2Delay = 2000;
 const totalDuration = 4700;
@@ -14,12 +12,9 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   const [showLine2, setShowLine2] = useState(false);
   const [visible, setVisible] = useState(true);
   const [typingDone, setTypingDone] = useState(false);
-  const [speechActive, setSpeechActive] = useState(false);
-  const speechUtterance = useRef<SpeechSynthesisUtterance | null>(null);
   const autoHideTimeout = useRef<number | null>(null);
   const typeTimeout = useRef<number | null>(null);
   const line2Timeout = useRef<number | null>(null);
-  const hasSpokenRef = useRef(false);
 
   // Prevent body scroll while intro is active
   useEffect(() => {
@@ -44,80 +39,6 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
     };
   }, [typeIndex]);
 
-  // Speech synthesis
-  useEffect(() => {
-    if (showLine2 && !hasSpokenRef.current) {
-      hasSpokenRef.current = true; // Prevent this effect from running again
-
-      if (!('speechSynthesis'in window)) {
-        console.warn('Web Speech API (speechSynthesis) is not supported in this browser.');
-        return;
-      }
-
-      // On many mobile browsers, speech synthesis can only be initiated by a user gesture.
-      // This will likely fail silently on mobile page load, which is expected.
-      const synth = window.speechSynthesis;
-      let voices: SpeechSynthesisVoice[] = [];
-      let attempts = 0;
-
-      const speak = () => {
-        voices = synth.getVoices();
-        if (voices.length === 0 && attempts < 10) {
-          attempts++;
-          setTimeout(speak, 100);
-          return;
-        }
-
-        console.log('Available voices:', voices);
-
-        let voice = voices.find(v =>
-          v.lang.startsWith('en') &&
-          (v.name.toLowerCase().includes('google') ||
-            v.name.toLowerCase().includes('zira') ||
-            v.name.toLowerCase().includes('david') ||
-            v.name.toLowerCase().includes('mark') ||
-            v.name.toLowerCase().includes('daniel')
-          )
-        ) || voices.find(v => v.lang.startsWith('en-US')) || voices.find(v => v.lang.startsWith('en'));
-
-        if (!voice) {
-          console.warn('No suitable English voice found for speech synthesis.');
-          return;
-        }
-
-        console.log('Selected voice:', voice.name, `(${voice.lang})`);
-
-        speechUtterance.current = new window.SpeechSynthesisUtterance(spokenLine);
-        speechUtterance.current.voice = voice;
-        speechUtterance.current.rate = 1.0;
-        speechUtterance.current.pitch = 1.0;
-        speechUtterance.current.volume = 1;
-
-        speechUtterance.current.onstart = () => setSpeechActive(true);
-        speechUtterance.current.onend = () => setSpeechActive(false);
-        speechUtterance.current.onerror = (e) => {
-          console.error('Speech synthesis error:', e);
-          setSpeechActive(false);
-        };
-
-        // Cancel any previous utterances before speaking
-        synth.cancel();
-        synth.speak(speechUtterance.current);
-      };
-
-      synth.onvoiceschanged = speak;
-      speak();
-    }
-    // Cleanup
-    return () => {
-      if (speechActive && window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-        setSpeechActive(false);
-      }
-    };
-    // eslint-disable-next-line
-  }, [showLine2]);
-
   // Auto-hide after totalDuration
   useEffect(() => {
     autoHideTimeout.current = setTimeout(() => handleHide(), totalDuration);
@@ -129,10 +50,6 @@ const IntroScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
 
   // Hide and remove intro overlay
   const handleHide = () => {
-    if (speechActive && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-      setSpeechActive(false);
-    }
     setVisible(false);
     setTimeout(() => {
       if (onFinish) onFinish();
