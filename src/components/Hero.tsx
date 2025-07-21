@@ -64,19 +64,9 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
-          {/* Left side: Photo */}
-          <div className="w-64 h-80 lg:w-72 lg:h-96 rounded-2xl overflow-hidden shadow-2xl flex-shrink-0 border-4 border-gray-700/50">
-            <img
-              src="/20250706_132407(1).jpg"
-              alt="Dhananjay Kharat"
-              className="w-full h-full object-cover"
-              style={{ objectPosition: 'top' }}
-            />
-          </div>
-
-          {/* Right side: Text content */}
-          <div className="space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12 lg:gap-16">
+          {/* Left side: Text content */}
+          <div className="space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:w-1/2">
             {/* Main Title */}
             <div className="space-y-8 w-full">
               <h1 className="text-5xl md:text-7xl font-black leading-tight">
@@ -124,6 +114,16 @@ const Hero: React.FC = () => {
                 </div>
               )}
             </div>
+          </div>
+
+          {/* Right side: Photo */}
+          <div className="w-64 h-80 lg:w-72 lg:h-96 rounded-2xl overflow-hidden shadow-2xl flex-shrink-0 border-4 border-gray-700/50 mb-8 lg:mb-0">
+            <img
+              src="/20250706_132407(1).jpg"
+              alt="Dhananjay Kharat"
+              className="w-full h-full object-cover"
+              style={{ objectPosition: 'top' }}
+            />
           </div>
         </div>
       </div>
