@@ -129,7 +129,7 @@ const Hero: React.FC = () => {
               <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-orange-500 via-blue-500 to-purple-500 p-1 shadow-2xl profile-img">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gray-900">
                   <img
-                    src="/profile.jpg"
+                    src="/my.jpg"
                     alt="Dhananjay Kharat"
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   />
