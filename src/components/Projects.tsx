@@ -32,7 +32,6 @@ const Projects: React.FC = () => {
       githubUrl: '#',
       color: 'from-green-500 to-emerald-500'
     },
-    // NEW PROJECT CARD
     {
       title: 'Record Video on Button Click and Send via Email',
       description: '🎥 Web App to Record & Email Videos Instantly! Built with Flask & JavaScript, this app lets users record videos in-browser and send them via email—no uploads or storage needed!',
