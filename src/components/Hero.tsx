@@ -125,21 +125,17 @@ const Hero: React.FC = () => {
 
           {/* Right: Profile Image */}
           <div className="flex-1 flex justify-center md:justify-end items-start md:items-start mb-8 md:mb-0">
-            <div className="relative profile-img-container profile-img-lower md:mt-8">
-              <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-orange-500 via-blue-500 to-purple-500 p-1 shadow-2xl profile-img">
-                <div className="w-full h-full rounded-full overflow-hidden bg-gray-900">
-                  <img
-                    src="/my.jpg"
-                    alt="Dhananjay Kharat"
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-              </div>
-              {/* Floating icon for extra effect (optional) */}
-              {/* <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center animate-bounce shadow-xl">
-                <Server className="w-8 h-8 text-white" />
-              </div> */}
+            <div className="flex justify-center items-center mt-10 mb-6">
+              <img
+                src="/my.jpg"
+                alt="Dhananjay Kharat"
+                className="w-64 md:w-80 lg:w-[400px] h-auto object-cover rounded-xl shadow-lg max-w-full"
+              />
             </div>
+            {/* Floating icon for extra effect (optional) */}
+            {/* <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center animate-bounce shadow-xl">
+              <Server className="w-8 h-8 text-white" />
+            </div> */}
           </div>
         </div>
       </div>
