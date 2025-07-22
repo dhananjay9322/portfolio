@@ -31,6 +31,16 @@ const Projects: React.FC = () => {
       demoUrl: '#',
       githubUrl: '#',
       color: 'from-green-500 to-emerald-500'
+    },
+    // NEW PROJECT CARD
+    {
+      title: 'Record Video on Button Click and Send via Email',
+      description: '🎥 Web App to Record & Email Videos Instantly! Built with Flask & JavaScript, this app lets users record videos in-browser and send them via email—no uploads or storage needed!',
+      tech: ['Flask', 'JavaScript', 'Docker'],
+      category: 'JavaScript, DevOps',
+      demoUrl: 'https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-flask-javascript-activity-7351959583545872385-Ia3I',
+      githubUrl: 'https://github.com/dhananjay9322/summer_internship_projects/tree/main/video_email',
+      color: 'from-yellow-500 to-orange-500'
     }
   ];
 
@@ -91,7 +101,7 @@ const Projects: React.FC = () => {
                 </div>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-2">
                   {project.tech.map(tech => (
                     <span
                       key={tech}
@@ -101,6 +111,19 @@ const Projects: React.FC = () => {
                     </span>
                   ))}
                 </div>
+                {/* Category Tags */}
+                {project.category && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.category.split(',').map(cat => (
+                      <span
+                        key={cat.trim()}
+                        className="px-3 py-1 bg-orange-600/80 text-white rounded-full text-xs font-semibold"
+                      >
+                        {cat.trim()}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 {/* Action Buttons */}
                 <div className="flex space-x-4">
