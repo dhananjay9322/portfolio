@@ -155,9 +155,6 @@ const Projects: React.FC = () => {
           <h2 className="text-4xl font-bold text-white mb-4">
             Featured <span className="text-orange-500">Projects</span>
           </h2>
-          <p className="text-xl text-gray-300">
-            Showcasing my work in DevOps, AI, and web development
-          </p>
         </div>
 
         {/* Filter Buttons */}
