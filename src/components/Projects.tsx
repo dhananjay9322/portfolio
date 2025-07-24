@@ -6,40 +6,139 @@ const Projects: React.FC = () => {
 
   const projects = [
     {
-      title: 'Docker Menu-Based Application',
-      description: 'Interactive command-line interface for Docker container management with automated deployment scripts and monitoring capabilities.',
-      tech: ['Docker', 'Python', 'Shell'],
-      category: 'DevOps',
-      demoUrl: '#',
-      githubUrl: '#',
+      title: "Send An Text Message",
+      description: "Instantly send SMS via a sleek Streamlit UI using Twilio's powerful API—perfect for alerts, notifications, or automation!",
+      tech: ["Python", "Streamlit", "Twilio"],
+      category: "Python",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-twilio-streamlit-activity-7349285489289424896-I6cn",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/sms_call.py",
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      title: 'AI-Based Docker Project using Gradio',
-      description: 'Machine learning application containerized with Docker, featuring a user-friendly Gradio interface for AI model deployment and testing.',
-      tech: ['Docker', 'Python', 'Gradio', 'AI/ML'],
-      category: 'AI/ML',
-      demoUrl: '#',
-      githubUrl: '#',
+      title: "Make A Call",
+      description: "Instantly trigger voice calls via a sleek Streamlit UI using Twilio's powerful API—perfect for alerts, notifications, or automation!",
+      tech: ["Python", "Streamlit", "Twilio"],
+      category: "Python",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-twilio-streamlit-activity-7349285489289424896-I6cn",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/sms_call.py",
       color: 'from-purple-500 to-pink-500'
     },
     {
-      title: 'Electricity Consumption Predictor using Streamlit',
-      description: 'Data-driven web application for predicting electricity consumption patterns with interactive visualizations and real-time analytics.',
-      tech: ['Python', 'Streamlit', 'Pandas', 'Scikit-learn'],
-      category: 'Data Science',
-      demoUrl: '#',
-      githubUrl: '#',
+      title: "Send An Email",
+      description: "Instantly send emails via a clean web interface using smtplib and secure Gmail login, perfect for quick automation or demos!",
+      tech: ["Python", "Streamlit"],
+      category: "Python",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-streamlit-emailautomation-activity-7348570954723192835-E0Ru",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/email.py",
       color: 'from-green-500 to-emerald-500'
     },
     {
-      title: 'Record Video on Button Click and Send via Email',
-      description: '🎥 Web App to Record & Email Videos Instantly! Built with Flask & JavaScript, this app lets users record videos in-browser and send them via email—no uploads or storage needed!',
-      tech: ['Flask', 'JavaScript', 'Docker'],
-      category: 'JavaScript, DevOps',
-      demoUrl: 'https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-flask-javascript-activity-7351959583545872385-Ia3I',
-      githubUrl: 'https://github.com/dhananjay9322/summer_internship_projects/tree/main/video_email',
+      title: "Create And Post a Message on LinkedIn",
+      description: "Posts instantly with a sleek Streamlit-powered UI — secure, fast, and perfect for devs and marketers.",
+      tech: ["Python", "Streamlit", "API"],
+      category: "Python",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-streamlit-linkedinapi-activity-7349366654239203329-fbq1",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/linkdein.py",
       color: 'from-yellow-500 to-orange-500'
+    },
+    {
+      title: "Post a message on Twitter (X)",
+      description: "Post tweets instantly with a minimal Streamlit app powered by Tweepy — secure, real-time, and perfect for quick tests or automation.",
+      tech: ["Python", "Streamlit", "API"],
+      category: "Python",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-streamlit-tweepy-activity-7349663804760203265-ru00",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/twitter.py",
+      color: 'from-pink-500 to-red-500'
+    },
+    {
+      title: "Post a message on Instagram",
+      description: "Simulate Instagram DMs with a sleek Streamlit interface — a fun, API-free demo to prototype real-world messaging experiences in Python.",
+      tech: ["Python", "Streamlit", "API"],
+      category: "Python",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-streamlit-instagramapi-activity-7349444897147363329-7GQx",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/insta.py",
+      color: 'from-purple-500 to-indigo-500'
+    },
+    {
+      title: "Send a WhatsApp Message",
+      description: "Automate WhatsApp messaging with a Streamlit + Python app — send or schedule messages instantly via a clean web UI using pywhatkit.",
+      tech: ["Python", "Streamlit", "API", "pywhatkit"],
+      category: "Python",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-streamlit-automation-activity-7348783127135211520-k0iN",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/whatsapp1.py",
+      color: 'from-green-500 to-lime-500'
+    },
+    {
+      title: "Automation panel using Streamlit",
+      description: "⚙️ Execute scripts, view logs, restart services, and schedule tasks from a sleek web UI. A hands-on dive into Python automation and real-time system control!",
+      tech: ["Python", "Streamlit", "API"],
+      category: "Python",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_streamlit-automation-python-activity-7350199882210562049-tu3L",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/autopanel.py",
+      color: 'from-orange-500 to-yellow-500'
+    },
+    {
+      title: "Automation panel using Gradio",
+      description: "🚀 Run scripts, send emails, and schedule tasks from a clean web UI. Perfect for fast prototyping and streamlined automation!",
+      tech: ["Python", "Gradio", "Subprocess", "Schedule"],
+      category: "Python",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_automation-python-gradio-activity-7350320640664494083-ZEKA",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/autopanel_gradio.ipynb",
+      color: 'from-blue-500 to-indigo-500'
+    },
+    {
+      title: "Run any tool or technology in Docker",
+      description: "🐳 Spinning up tools like NGINX in Docker is a game-changer — fast, isolated, and perfect for testing. One command and you're live on localhost:8080!",
+      tech: ["nginx"],
+      category: "Docker",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_docker-devops-containers-activity-7351287043315945473-o32C",
+      githubUrl: "",
+      color: 'from-cyan-500 to-blue-500'
+    },
+    {
+      title: "Set up and configure the Apache webserver in Docker",
+      description: "🐳 Deployed Apache in Docker after tackling real-world build errors — from missing files to path issues. Debugging each step taught me more than any tutorial ever could. Lessons lived, not just learned!",
+      tech: ["Apache"],
+      category: "Docker",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_devops-docker-apache-activity-7351827399094755330-nfgM",
+      githubUrl: "",
+      color: 'from-red-500 to-yellow-500'
+    },
+    {
+      title: "Set up Docker inside Docker (DIND)",
+      description: "🐳🔁 A powerful way to run Docker inside Docker for CI/CD, testing, and automation. Learned the setup, use cases, and where it fits in real-world workflows!",
+      tech: ["DIND"],
+      category: "Docker",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_docker-devops-dind-activity-7350780117310205953-9zEm",
+      githubUrl: "",
+      color: 'from-gray-500 to-blue-500'
+    },
+    {
+      title: "Access the webcam and capture a photo",
+      description: "🎥 Webcam Photo Capture App - instant snapshots, and downloads, all powered by modern browser APIs. A great dive into real-world JS and client-side creativity!",
+      tech: ["HTML", "CSS", "JavaScript", "API"],
+      category: "JavaScript",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_webdevelopment-javascriptprojects-frontenddevelopment-activity-7350922703677083648-Ri8P",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/blob/main/photo.html",
+      color: 'from-yellow-500 to-green-500'
+    },
+    {
+      title: "Send an Email",
+      description: "📬 Built a clean and functional Email Sending API — perfect for contact forms, alerts, and automations",
+      tech: ["Express.js", "Node.js", "CORS", "body-parser", "Nodemailer"],
+      category: "JavaScript",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_nodejs-expressjs-nodemailer-activity-7351578811781574658-Q9-u",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/tree/main/email-backend",
+      color: 'from-green-500 to-blue-500'
+    },
+    {
+      title: "Record Video and Send via Email",
+      description: "Webapp to record webcam videos in-browser and send them instantly via email — no uploads, no storage, just fast, secure delivery. Perfect for interviews, feedback, and support use cases!",
+      tech: ["Python Flask", "JavaScript", "HTML5", "CSS", "Gmail SMTP"],
+      category: "JavaScript",
+      demoUrl: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_python-flask-javascript-activity-7351959583545872385-Ia3I",
+      githubUrl: "https://github.com/dhananjay9322/summer_internship_projects/tree/main/video_email",
+      color: 'from-orange-500 to-pink-500'
     }
   ];
 
