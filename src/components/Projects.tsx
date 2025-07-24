@@ -142,7 +142,7 @@ const Projects: React.FC = () => {
     }
   ];
 
-  const filters = ['All', 'DevOps', 'AI/ML', 'Data Science'];
+  const filters = ['All', 'Python', 'Docker', 'JavaScript'];
 
   const filteredProjects = selectedFilter === 'All' 
     ? projects 
