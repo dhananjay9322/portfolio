@@ -18,16 +18,15 @@ function App() {
   return (
     <ThemeProvider>
       {showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />}
-      <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden flex">
+      <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden">
         <Navbar />
-        <div className="flex-1 ml-0 md:ml-64">
-          <FloatingElements />
-          <ScrollProgress />
-          <main>
-            <Hero />
-            <Skills />
-            <Projects />
-            <BlogCaseStudies postsData={[
+        <FloatingElements />
+        <ScrollProgress />
+        <main>
+          <Hero />
+          <Skills />
+          <Projects />
+          <BlogCaseStudies postsData={[
               {
                 title: "5 GUI programs and find commands working behind them",
                 description: "Ever wonder what Linux GUI tools really do behind the scenes? Here’s how 5 popular apps map directly to powerful terminal commands — become a smarter, command-line-savvy user today!",
@@ -104,7 +103,6 @@ function App() {
           </main>
           <Footer />
         </div>
-      </div>
     </ThemeProvider>
   );
 }
