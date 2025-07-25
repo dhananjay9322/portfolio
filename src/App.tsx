@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Education from './components/Education';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import FloatingElements from './components/FloatingElements';
+import EnhancedNavbar from './components/EnhancedNavbar';
+import EnhancedHero from './components/EnhancedHero';
+import EnhancedSkills from './components/EnhancedSkills';
+import EnhancedProjects from './components/EnhancedProjects';
+import EnhancedEducation from './components/EnhancedEducation';
+import EnhancedContact from './components/EnhancedContact';
+import EnhancedFooter from './components/EnhancedFooter';
+import CloudBackground from './components/CloudBackground';
+import LoadingScreen from './components/LoadingScreen';
 import ThemeProvider from './contexts/ThemeContext';
-import ScrollProgress from './components/ScrollProgress';
-import IntroScreen from './components/IntroScreen';
-import BlogCaseStudies from './components/BlogCaseStudies';
+import EnhancedBlogCaseStudies from './components/EnhancedBlogCaseStudies';
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showLoading, setShowLoading] = useState(true);
 
   return (
     <ThemeProvider>
-      {showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />}
+      {showLoading && <LoadingScreen onComplete={() => setShowLoading(false)} />}
       <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden">
-        <Navbar />
-        <FloatingElements />
-        <ScrollProgress />
+        <EnhancedNavbar />
+        <CloudBackground />
         <main>
-          <Hero />
-          <Skills />
-          <Projects />
-          <BlogCaseStudies postsData={[
+          <EnhancedHero />
+          <EnhancedSkills />
+          <EnhancedProjects />
+          <EnhancedBlogCaseStudies postsData={[
               {
                 title: "5 GUI programs and find commands working behind them",
                 description: "Ever wonder what Linux GUI tools really do behind the scenes? Here’s how 5 popular apps map directly to powerful terminal commands — become a smarter, command-line-savvy user today!",
@@ -98,10 +96,10 @@ function App() {
                 readLink: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_linkdein-aws-amazon-activity-7348953603920850944-7LAp?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEnsUiQB_YTfoPGfGHNVqrqejy1DZ8m39iY"
               }
             ]} />
-            <Education />
-            <Contact />
+            <EnhancedEducation />
+            <EnhancedContact />
           </main>
-          <Footer />
+          <EnhancedFooter />
         </div>
     </ThemeProvider>
   );
