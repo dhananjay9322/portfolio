@@ -31,7 +31,7 @@ const BlogCaseStudies: React.FC<BlogCaseStudiesProps> = ({ postsData }) => {
         );
 
   return (
-    <section className="py-20 px-4 relative bg-[#181924] overflow-hidden">
+    <section id="blogs" className="py-20 px-4 relative bg-[#181924] overflow-hidden">
       {/* Subtle stars/particles background */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* You can use a CSS background or a simple SVG for stars/particles */}
