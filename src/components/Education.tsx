@@ -86,7 +86,7 @@ const Education: React.FC = () => {
               
               <div className="flex-1 bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 group">
                 <h3 className="text-2xl font-bold text-white group-hover:text-blue-500 transition-colors duration-300 mb-4">
-                  Certifications & Learning
+                  Learning
                 </h3>
                 
                 <div className="space-y-3">
