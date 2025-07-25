@@ -43,8 +43,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <aside className="fixed top-0 left-0 h-screen w-64 bg-gray-900/90 border-r border-gray-800 z-40 flex flex-col transition-transform duration-300 md:translate-x-0 md:sticky md:h-screen md:w-64"
-      style={{ transform: isOpen ? 'translateX(0)' : 'translateX(-100%)' }}
+    <aside className={`z-40 flex flex-col bg-gray-900/90 border-r border-gray-800 fixed top-0 left-0 h-screen w-64 md:sticky md:translate-x-0 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:!translate-x-0`}
     >
       {/* Hamburger for mobile */}
       <div className="md:hidden flex items-center justify-between px-4 py-4">
