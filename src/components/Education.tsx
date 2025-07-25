@@ -106,6 +106,18 @@ const Education: React.FC = () => {
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                     <span className="text-gray-300">DevOps Practices</span>
                   </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-gray-300">Jenkins</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-gray-300">Kubernetes</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-gray-300">Flutter</span>
+                  </div>
                 </div>
               </div>
             </div>

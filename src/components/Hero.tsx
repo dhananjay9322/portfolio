@@ -113,7 +113,6 @@ const Hero: React.FC = () => {
                               {role.description}
                             </p>
                           </div>
-                          <div className={`w-2 h-16 bg-gradient-to-b ${role.gradient} rounded-full group-hover:h-20 transition-all duration-500`}></div>
                         </div>
                       </div>
                     </div>
