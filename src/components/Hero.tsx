@@ -87,7 +87,6 @@ const Hero: React.FC = () => {
             {/* Typing Heading */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-8 text-center md:text-left relative">
               <span>{getStyledHeading()}</span>
-              <span className="typing-cursor">|</span>
             </h1>
 
             {/* Role Cards */}
@@ -105,6 +104,7 @@ const Hero: React.FC = () => {
                           <div className={`p-4 rounded-xl bg-gradient-to-r ${role.gradient} shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:rotate-12`}>
                             <role.icon className="w-8 h-8 text-white" />
                           </div>
+                          <div className={`w-2 h-16 bg-gradient-to-b ${role.gradient} rounded-full group-hover:h-20 transition-all duration-500`}></div>
                           <div className="flex-1">
                             <h2 className={`text-3xl md:text-4xl font-bold bg-gradient-to-r ${role.gradient} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500`}>
                               {role.title}
