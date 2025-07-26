@@ -8,7 +8,7 @@ const typingSpeed = 60;
 const EnhancedHero: React.FC = () => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showRoles, setShowRoles] = useState(false);
+  const [showRoles, setShowRoles] = useState(true);
   const controls = useAnimation();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const EnhancedHero: React.FC = () => {
         setCurrentIndex(currentIndex + 1);
       }, typingSpeed);
       return () => clearTimeout(timer);
-    } else if (!showRoles) {
+    } else if (currentIndex >= fullHeading.length && !showRoles) {
       setTimeout(() => {
         setShowRoles(true);
         controls.start("visible");
@@ -150,7 +150,41 @@ const EnhancedHero: React.FC = () => {
             </motion.h1>
 
             {/* Role Cards */}
-            {showRoles && (
+            <motion.div 
+              className="space-y-6 mb-12"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {roles.map((role, index) => (
+                <motion.div
+                  key={role.title}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05, x: 10 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group cursor-pointer"
+                >
+                  <div className="relative">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${role.gradient} rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`}></div>
+                    <div className="relative bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-transparent transition-all duration-500">
+                      <div className="flex items-center space-x-6">
+                        <div className={`w-4 h-16 bg-gradient-to-b ${role.gradient} rounded-full group-hover:h-20 transition-all duration-500`}></div>
+                        <div>
+                          <h2 className={`text-3xl lg:text-4xl font-bold bg-gradient-to-r ${role.gradient} bg-clip-text text-transparent font-mono`}>
+                            {role.title}
+                          </h2>
+                          <p className="text-gray-400 text-lg mt-1 group-hover:text-gray-300 transition-colors duration-300">
+                            {role.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
               <motion.div 
                 className="space-y-6 mb-12"
                 variants={containerVariants}
@@ -184,39 +218,6 @@ const EnhancedHero: React.FC = () => {
                   </motion.div>
                 ))}
               </motion.div>
-            )}
-
-            {/* CTA Buttons */}
-            {showRoles && (
-              <motion.div 
-                className="flex flex-wrap gap-4 justify-center lg:justify-start"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.6 }}
-              >
-                <motion.a
-                  href="#contact"
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(34, 197, 94, 0.5)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold flex items-center space-x-2 hover:shadow-lg transition-all duration-300"
-                >
-                  <Mail className="w-5 h-5" />
-                  <span>Get In Touch</span>
-                </motion.a>
-                
-                <motion.a
-                  href="https://github.com/dhananjay9322"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(139, 92, 246, 0.5)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gray-800 border border-gray-600 text-white rounded-lg font-semibold flex items-center space-x-2 hover:bg-gray-700 transition-all duration-300"
-                >
-                  <Github className="w-5 h-5" />
-                  <span>GitHub</span>
-                </motion.a>
-              </motion.div>
-            )}
           </motion.div>
 
           {/* Right: Profile Image */}
@@ -241,33 +242,30 @@ const EnhancedHero: React.FC = () => {
               />
               
               {/* Floating tech icons */}
-              {[
-                { icon: '☁️', delay: 0, x: -20, y: -30 },
-                { icon: '🐳', delay: 1, x: 30, y: -20 },
-                { icon: '⚙️', delay: 2, x: -30, y: 20 },
-                { icon: '🚀', delay: 3, x: 25, y: 30 }
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute text-2xl"
-                  animate={{
-                    y: [0, -10, 0],
-                    rotate: [0, 5, -5, 0]
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: item.delay
-                  }}
-                  style={{
-                    left: `${50 + item.x}%`,
-                    top: `${50 + item.y}%`,
-                    transform: 'translate(-50%, -50%)'
-                  }}
-                >
-                  {item.icon}
-                </motion.div>
-              ))}
+              className="flex flex-wrap gap-4 justify-center lg:justify-start"
+              <motion.a
+                href="#contact"
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(34, 197, 94, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold flex items-center space-x-2 hover:shadow-lg transition-all duration-300"
+              >
+                <Mail className="w-5 h-5" />
+                <span>Get In Touch</span>
+              </motion.a>
+              
+              <motion.a
+                href="https://github.com/dhananjay9322"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(139, 92, 246, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gray-800 border border-gray-600 text-white rounded-lg font-semibold flex items-center space-x-2 hover:bg-gray-700 transition-all duration-300"
+              >
+                <Github className="w-5 h-5" />
+                <span>GitHub</span>
+              </motion.a>
             </div>
           </motion.div>
         </div>
