@@ -1,51 +1,56 @@
-import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
-import * as THREE from 'three';
+import React from 'react';
+import AnimatedBackground from './AnimatedBackground';
+import MatrixRain from './MatrixRain';
+import CircuitLines from './CircuitLines';
+import TechIcons from './TechIcons';
 
-const CloudParticles: React.FC = () => {
-  const ref = useRef<THREE.Points>(null);
-  
-  const particlesPosition = useMemo(() => {
-    const positions = new Float32Array(2000 * 3);
-    for (let i = 0; i < 2000; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-    }
-    return positions;
-  }, []);
+interface CloudBackgroundProps {
+  variant?: 'hero' | 'section' | 'footer' | 'minimal';
+  enableMatrix?: boolean;
+  enableCircuits?: boolean;
+  enableTechIcons?: boolean;
+}
 
-  useFrame((state) => {
-    if (ref.current) {
-      ref.current.rotation.x = state.clock.elapsedTime * 0.05;
-      ref.current.rotation.y = state.clock.elapsedTime * 0.075;
-    }
-  });
-
-  return (
-    <Points ref={ref} positions={particlesPosition} stride={3} frustumCulled={false}>
-      <PointMaterial
-        transparent
-        color="#22d3ee"
-        size={0.05}
-        sizeAttenuation={true}
-        depthWrite={false}
-        opacity={0.6}
-      />
-    </Points>
-  );
-};
-
-const CloudBackground: React.FC = () => {
+const CloudBackground: React.FC<CloudBackgroundProps> = ({
+  variant = 'hero',
+  enableMatrix = false,
+  enableCircuits = true,
+  enableTechIcons = true
+}) => {
   return (
     <div className="fixed inset-0 -z-10">
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 75 }}
-        style={{ background: 'transparent' }}
-      >
-        <CloudParticles />
-      </Canvas>
+      <AnimatedBackground 
+        variant={variant}
+        speed={0.5}
+        theme="dark"
+        enableParticles={true}
+        enableGrid={true}
+        enableScanlines={variant === 'hero'}
+      />
+      
+      {enableMatrix && (
+        <MatrixRain 
+          intensity="low"
+          speed={0.3}
+          theme="dark"
+        />
+      )}
+      
+      {enableCircuits && (
+        <CircuitLines 
+          variant="grid"
+          animated={true}
+          theme="dark"
+        />
+      )}
+      
+      {enableTechIcons && variant === 'hero' && (
+        <TechIcons 
+          icons={['docker', 'kubernetes', 'aws', 'jenkins', 'github']}
+          animated={true}
+          theme="dark"
+        />
+      )}
     </div>
   );
 };

@@ -20,6 +20,12 @@ function App() {
       <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden">
         <EnhancedNavbar />
         <CloudBackground />
+        <CloudBackground 
+          variant="hero"
+          enableMatrix={false}
+          enableCircuits={true}
+          enableTechIcons={true}
+        />
         <main>
           <EnhancedHero />
           <EnhancedSkills />
