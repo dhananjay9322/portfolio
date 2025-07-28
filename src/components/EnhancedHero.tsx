@@ -242,7 +242,6 @@ const EnhancedHero: React.FC = () => {
               />
               
               {/* Floating tech icons */}
-              className="flex flex-wrap gap-4 justify-center lg:justify-start"
               <motion.a
                 href="#contact"
                 variants={itemVariants}
