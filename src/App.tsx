@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import EnhancedNavbar from './components/EnhancedNavbar';
 import EnhancedHero from './components/EnhancedHero';
 import EnhancedSkills from './components/EnhancedSkills';
+import MajorProjects from './components/MajorProjects';
 import EnhancedProjects from './components/EnhancedProjects';
 import EnhancedEducation from './components/EnhancedEducation';
 import EnhancedContact from './components/EnhancedContact';
@@ -30,6 +31,7 @@ function App() {
         <main>
           <EnhancedHero />
           <EnhancedSkills />
+          <MajorProjects />
           <EnhancedProjects />
           <EnhancedBlogCaseStudies postsData={[
               {
