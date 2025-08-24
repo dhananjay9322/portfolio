@@ -26,6 +26,7 @@ function App() {
           enableCircuits={true}
           enableTechIcons={true}
         />
+        
         <main>
           <EnhancedHero />
           <EnhancedSkills />
@@ -33,7 +34,7 @@ function App() {
           <EnhancedBlogCaseStudies postsData={[
               {
                 title: "5 GUI programs and find commands working behind them",
-                description: "Ever wonder what Linux GUI tools really do behind the scenes? Here’s how 5 popular apps map directly to powerful terminal commands — become a smarter, command-line-savvy user today!",
+                description: "Ever wonder what Linux GUI tools really do behind the scenes? Here's how 5 popular apps map directly to powerful terminal commands — become a smarter, command-line-savvy user today!",
                 tags: ["NetworkManager", "GNOME System Monitor", "Synaptic Package Manager", "Nautilus", "GParted", "Linux"],
                 type: "Case Study",
                 readLink: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_linux-opensource-sysadmin-activity-7349639733225938947-LTr_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEnsUiQB_YTfoPGfGHNVqrqejy1DZ8m39iY"
@@ -75,7 +76,7 @@ function App() {
               },
               {
                 title: "🚀 How Top Companies Use AWS to Scale Faster",
-                description: "AWS powers innovation at scale — from LinkedIn’s global connectivity to Moderna’s rapid vaccine development — proving cloud is not just infrastructure, but a strategic advantage.",
+                description: "AWS powers innovation at scale — from LinkedIn's global connectivity to Moderna's rapid vaccine development — proving cloud is not just infrastructure, but a strategic advantage.",
                 tags: ["AWS"],
                 type: "Blog",
                 readLink: "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_aws-cloudcomputing-casestudy-activity-7352579619536998400-ktMF?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEnsUiQB_YTfoPGfGHNVqrqejy1DZ8m39iY"

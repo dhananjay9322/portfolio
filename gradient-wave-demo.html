@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Wave Background Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f23;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Gradient Wave Background */
+        .gradient-wave-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .wave-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        .wave-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.25;
+            will-change: transform, opacity;
+        }
+
+        .wave-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateZ(0);
+        }
+
+        .wave-path {
+            animation: wave-animation 10s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
+
+        .wave-path-1 {
+            animation-delay: 0s;
+        }
+
+        .wave-path-2 {
+            animation-delay: 1.5s;
+        }
+
+        .wave-path-3 {
+            animation-delay: 3s;
+        }
+
+        .wave-path-4 {
+            animation-delay: 4.5s;
+        }
+
+        @keyframes wave-animation {
+            0% {
+                transform: translateX(-100%) scaleY(1);
+            }
+            25% {
+                transform: translateX(-50%) scaleY(1.1);
+            }
+            50% {
+                transform: translateX(0%) scaleY(1);
+            }
+            75% {
+                transform: translateX(50%) scaleY(1.1);
+            }
+            100% {
+                transform: translateX(100%) scaleY(1);
+            }
+        }
+
+        /* Background gradient base */
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, 
+                rgba(0, 240, 255, 0.08) 0%, 
+                rgba(255, 0, 255, 0.04) 30%, 
+                rgba(106, 0, 255, 0.02) 60%, 
+                transparent 100%);
+            filter: blur(1px);
+        }
+
+        /* Glow effects */
+        .glow-effects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+                         radial-gradient(circle at 70% 80%, rgba(255, 0, 255, 0.12) 0%, transparent 50%),
+                         radial-gradient(circle at 50% 50%, rgba(106, 0, 255, 0.08) 0%, transparent 70%);
+            filter: blur(3px);
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Content Styles */
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00f0ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #00f0ff;
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title.cyan { color: #00f0ff; }
+        .feature-title.pink { color: #ff00ff; }
+        .feature-title.purple { color: #6a00ff; }
+
+        .feature-list {
+            list-style: none;
+            color: #c0c0c0;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '•';
+            color: #00f0ff;
+            position: absolute;
+            left: 0;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .controls h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .control-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            margin-bottom: 0.5rem;
+        }
+
+        .control-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .control-input:focus {
+            outline: none;
+            border-color: #00f0ff;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .range-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00f0ff, #ff00ff);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .range-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00f0ff, #ff00ff);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .color-input {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-input {
+            width: 18px;
+            height: 18px;
+            accent-color: #00f0ff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+            
+            .control-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Performance optimizations */
+        .wave-container {
+            will-change: transform;
+        }
+
+        .wave-layer {
+            will-change: transform, opacity;
+        }
+    </style>
+</head>
+<body>
+    <!-- Gradient Wave Background -->
+    <div class="gradient-wave-bg">
+        <div class="bg-gradient"></div>
+        
+        <!-- Wave Layer 1 -->
+        <div class="wave-container wave-layer" style="opacity: 0.25;">
+            <svg class="wave-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="wave-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
+                        <stop offset="50%" stop-color="#ff00ff" stop-opacity="0.6" />
+                        <stop offset="100%" stop-color="#6a00ff" stop-opacity="0.8" />
+                    </linearGradient>
+                </defs>
+                <path class="wave-path wave-path-1" d="M 0,50 Q 25,35 50,50 T 100,50 L 100,100 L 0,100 Z" fill="url(#wave-gradient-1)" />
+            </svg>
+        </div>
+
+        <!-- Wave Layer 2 -->
+        <div class="wave-container wave-layer" style="opacity: 0.2;">
+            <svg class="wave-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.7" />
+                        <stop offset="50%" stop-color="#ff00ff" stop-opacity="0.5" />
+                        <stop offset="100%" stop-color="#6a00ff" stop-opacity="0.7" />
+                    </linearGradient>
+                </defs>
+                <path class="wave-path wave-path-2" d="M 0,50 Q 25,30 50,50 T 100,50 L 100,100 L 0,100 Z" fill="url(#wave-gradient-2)" />
+            </svg>
+        </div>
+
+        <!-- Wave Layer 3 -->
+        <div class="wave-container wave-layer" style="opacity: 0.15;">
+            <svg class="wave-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="wave-gradient-3" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.6" />
+                        <stop offset="50%" stop-color="#ff00ff" stop-opacity="0.4" />
+                        <stop offset="100%" stop-color="#6a00ff" stop-opacity="0.6" />
+                    </linearGradient>
+                </defs>
+                <path class="wave-path wave-path-3" d="M 0,50 Q 25,25 50,50 T 100,50 L 100,100 L 0,100 Z" fill="url(#wave-gradient-3)" />
+            </svg>
+        </div>
+
+        <!-- Wave Layer 4 -->
+        <div class="wave-container wave-layer" style="opacity: 0.1;">
+            <svg class="wave-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="wave-gradient-4" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.5" />
+                        <stop offset="50%" stop-color="#ff00ff" stop-opacity="0.3" />
+                        <stop offset="100%" stop-color="#6a00ff" stop-opacity="0.5" />
+                    </linearGradient>
+                </defs>
+                <path class="wave-path wave-path-4" d="M 0,50 Q 25,20 50,50 T 100,50 L 100,100 L 0,100 Z" fill="url(#wave-gradient-4)" />
+            </svg>
+        </div>
+
+        <div class="glow-effects"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="header">
+            <h1 class="title">Gradient Wave Background</h1>
+            <p class="subtitle">
+                High-performance animated gradient wave background with neon colors, 
+                smooth 60fps animations, and interactive effects. Perfect for technology-focused portfolios.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3 class="feature-title cyan">Performance</h3>
+                <ul class="feature-list">
+                    <li>60fps smooth animations</li>
+                    <li>Hardware acceleration</li>
+                    <li>Memory leak prevention</li>
+                    <li>Responsive design</li>
+                    <li>Cross-browser compatibility</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3 class="feature-title pink">Visual Effects</h3>
+                <ul class="feature-list">
+                    <li>Multiple wave layers</li>
+                    <li>Neon gradient colors</li>
+                    <li>Soft glow effects</li>
+                    <li>Dynamic opacity</li>
+                    <li>Smooth transitions</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3 class="feature-title purple">Technical Features</h3>
+                <ul class="feature-list">
+                    <li>Pure CSS animations</li>
+                    <li>SVG wave paths</li>
+                    <li>Customizable parameters</li>
+                    <li>Safe z-index layering</li>
+                    <li>No external dependencies</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="controls">
+            <h2>Customization Options</h2>
+            <div class="control-grid">
+                <div class="control-group">
+                    <label class="control-label">Layer Count: <span id="layerCountValue">4</span></label>
+                    <input type="range" class="range-slider" id="layerCount" min="1" max="6" value="4">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Animation Speed: <span id="speedValue">10</span>s</label>
+                    <input type="range" class="range-slider" id="speed" min="5" max="20" value="10">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Opacity: <span id="opacityValue">0.25</span></label>
+                    <input type="range" class="range-slider" id="opacity" min="0.1" max="0.5" step="0.05" value="0.25">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Cyan Color</label>
+                    <input type="color" class="color-input" id="cyanColor" value="#00f0ff">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Pink Color</label>
+                    <input type="color" class="color-input" id="pinkColor" value="#ff00ff">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Purple Color</label>
+                    <input type="color" class="color-input" id="purpleColor" value="#6a00ff">
+                </div>
+
+                <div class="control-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" class="checkbox-input" id="enableHover" checked>
+                        <label class="control-label">Enable Hover Effects</label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" class="checkbox-input" id="enableMouseTracking" checked>
+                        <label class="control-label">Enable Mouse Tracking</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <h3 class="feature-title cyan">Implementation</h3>
+            <p style="color: #c0c0c0; line-height: 1.6;">
+                This gradient wave background is implemented using pure CSS and SVG animations. 
+                It features hardware-accelerated transforms, optimized rendering, and responsive design. 
+                The component is ready to integrate into any React project or can be used as standalone HTML/CSS.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Interactive controls functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const layerCountSlider = document.getElementById('layerCount');
+            const speedSlider = document.getElementById('speed');
+            const opacitySlider = document.getElementById('opacity');
+            const cyanColorPicker = document.getElementById('cyanColor');
+            const pinkColorPicker = document.getElementById('pinkColor');
+            const purpleColorPicker = document.getElementById('purpleColor');
+            const enableHoverCheckbox = document.getElementById('enableHover');
+            const enableMouseTrackingCheckbox = document.getElementById('enableMouseTracking');
+
+            // Update display values
+            function updateDisplayValue(elementId, value) {
+                document.getElementById(elementId).textContent = value;
+            }
+
+            // Layer count control
+            layerCountSlider.addEventListener('input', function() {
+                updateDisplayValue('layerCountValue', this.value);
+                // In a real implementation, this would update the wave layers
+            });
+
+            // Speed control
+            speedSlider.addEventListener('input', function() {
+                updateDisplayValue('speedValue', this.value);
+                // Update animation duration
+                const wavePaths = document.querySelectorAll('.wave-path');
+                wavePaths.forEach(path => {
+                    path.style.animationDuration = this.value + 's';
+                });
+            });
+
+            // Opacity control
+            opacitySlider.addEventListener('input', function() {
+                updateDisplayValue('opacityValue', this.value);
+                // Update wave layer opacity
+                const waveLayers = document.querySelectorAll('.wave-layer');
+                waveLayers.forEach((layer, index) => {
+                    const baseOpacity = parseFloat(this.value);
+                    const layerOpacity = baseOpacity * (1 - index * 0.2);
+                    layer.style.opacity = Math.max(0.05, layerOpacity);
+                });
+            });
+
+            // Color controls
+            function updateGradients() {
+                const cyan = cyanColorPicker.value;
+                const pink = pinkColorPicker.value;
+                const purple = purpleColorPicker.value;
+
+                // Update all gradient definitions
+                for (let i = 1; i <= 4; i++) {
+                    const gradient = document.getElementById(`wave-gradient-${i}`);
+                    if (gradient) {
+                        gradient.innerHTML = `
+                            <stop offset="0%" stop-color="${cyan}" stop-opacity="0.8" />
+                            <stop offset="50%" stop-color="${pink}" stop-opacity="0.6" />
+                            <stop offset="100%" stop-color="${purple}" stop-opacity="0.8" />
+                        `;
+                    }
+                }
+            }
+
+            cyanColorPicker.addEventListener('input', updateGradients);
+            pinkColorPicker.addEventListener('input', updateGradients);
+            purpleColorPicker.addEventListener('input', updateGradients);
+
+            // Hover effects
+            enableHoverCheckbox.addEventListener('change', function() {
+                const glowEffects = document.querySelector('.glow-effects');
+                if (this.checked) {
+                    glowEffects.style.opacity = '0.4';
+                } else {
+                    glowEffects.style.opacity = '0.2';
+                }
+            });
+
+            // Mouse tracking
+            let mouseX = 0, mouseY = 0;
+            enableMouseTrackingCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    document.addEventListener('mousemove', handleMouseMove);
+                } else {
+                    document.removeEventListener('mousemove', handleMouseMove);
+                }
+            });
+
+            function handleMouseMove(e) {
+                mouseX = e.clientX / window.innerWidth;
+                mouseY = e.clientY / window.innerHeight;
+                
+                // Update glow effects position
+                const glowEffects = document.querySelector('.glow-effects');
+                glowEffects.style.background = `
+                    radial-gradient(circle at ${mouseX * 100}% ${mouseY * 100}%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at ${(1 - mouseX) * 100}% ${(1 - mouseY) * 100}%, rgba(255, 0, 255, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, rgba(106, 0, 255, 0.08) 0%, transparent 70%)
+                `;
+            }
+
+            // Initialize mouse tracking if enabled
+            if (enableMouseTrackingCheckbox.checked) {
+                document.addEventListener('mousemove', handleMouseMove);
+            }
+        });
+    </script>
+</body>
+</html>

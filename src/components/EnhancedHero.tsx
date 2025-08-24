@@ -227,7 +227,7 @@ const EnhancedHero: React.FC = () => {
             initial="hidden"
             animate="visible"
           >
-            <div className="relative">
+            <div className="relative -mt-8">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
