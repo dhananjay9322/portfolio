@@ -12,43 +12,37 @@ const EnhancedSkills: React.FC = () => {
       name: 'Cloud Computing',
       icon: Cloud,
       color: 'from-blue-400 to-blue-600',
-      description: 'AWS, Google Cloud, Azure deployment and management',
-      level: 85
+      description: 'AWS, Google Cloud, Azure deployment and management'
     },
     {
       name: 'DevOps',
       icon: Server,
       color: 'from-green-400 to-green-600',
-      description: 'CI/CD, Infrastructure as Code, Monitoring',
-      level: 90
+      description: 'CI/CD, Infrastructure as Code, Monitoring'
     },
     {
       name: 'C',
       icon: Code,
       color: 'from-purple-400 to-purple-600',
-      description: 'System programming and low-level optimization',
-      level: 80
+      description: 'System programming and low-level optimization'
     },
     {
       name: 'C++',
       icon: Cpu,
       color: 'from-indigo-400 to-indigo-600',
-      description: 'Object-oriented programming and competitive coding',
-      level: 75
+      description: 'Object-oriented programming and competitive coding'
     },
     {
       name: 'Python',
       icon: Code,
       color: 'from-yellow-400 to-yellow-600',
-      description: 'Automation, web scraping, and data analysis',
-      level: 95
+      description: 'Automation, web scraping, and data analysis'
     },
     {
       name: 'Docker',
       icon: Container,
       color: 'from-cyan-400 to-cyan-600',
-      description: 'Containerization and orchestration',
-      level: 88
+      description: 'Containerization and orchestration'
     }
   ];
 
@@ -165,25 +159,9 @@ const EnhancedSkills: React.FC = () => {
                     </div>
                   </div>
                   
-                  <p className="text-gray-300 group-hover:text-white transition-colors duration-300 mb-4">
+                  <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
                     {skill.description}
                   </p>
-
-                  {/* Skill level indicator */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-400">Proficiency</span>
-                      <span className="text-cyan-400 font-mono">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
-                      <motion.div
-                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                      />
-                    </div>
-                  </div>
                 </div>
 
                 {/* Hover effect particles */}
