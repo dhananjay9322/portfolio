@@ -201,7 +201,7 @@ const EnhancedHero: React.FC = () => {
                   className="px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold flex items-center space-x-2 hover:shadow-lg transition-all duration-300"
                 >
                   <Mail className="w-5 h-5" />
-                  <span>Get In Touch</span>
+                  <span>Email</span>
                 </motion.a>
 
                 <motion.a
@@ -212,7 +212,7 @@ const EnhancedHero: React.FC = () => {
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(236, 72, 153, 0.3)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-4 bg-gray-800 border border-gray-600 text-white rounded-lg font-semibold flex items-center space-x-2 hover:bg-gray-700 transition-all duration-300"
+                  className="px-6 py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg font-semibold flex items-center space-x-2 hover:shadow-lg transition-all duration-300"
                 >
                   <Instagram className="w-5 h-5" />
                   <span>Instagram</span>
@@ -226,7 +226,7 @@ const EnhancedHero: React.FC = () => {
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-4 bg-gray-800 border border-gray-600 text-white rounded-lg font-semibold flex items-center space-x-2 hover:bg-gray-700 transition-all duration-300"
+                  className="px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-semibold flex items-center space-x-2 hover:shadow-lg transition-all duration-300"
                 >
                   <Linkedin className="w-5 h-5" />
                   <span>LinkedIn</span>
