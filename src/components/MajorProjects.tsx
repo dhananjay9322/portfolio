@@ -33,6 +33,33 @@ const MajorProjects: React.FC = () => {
       githubUrl: "https://github.com/dhananjay9322/devoops.project",
       color: 'from-blue-500 to-cyan-500',
       image: "/cicd-pipeline.png"
+    },
+    {
+      title: "All-in-One Python Dashboard",
+      description:
+        "The All-in-One Dashboard is a Streamlit-based application that integrates multiple tools into a single platform. It features Docker and Linux management via SSH, AWS EC2 & S3 automation, communication utilities (Email, WhatsApp, Twilio SMS/Calls), and social media posting (Twitter, LinkedIn, Instagram). It also includes AI-powered assistance, electricity consumption prediction, and various web utilities, making it a versatile project management and automation hub.",
+      tech: [
+        "Streamlit",
+        "Python",
+        "AWS EC2",
+        "AWS S3",
+        "Docker",
+        "Paramiko",
+        "Twilio",
+        "LinkedIn API",
+        "Twitter API",
+        "Instagram API",
+        "PyWhatKit",
+        "Google Gemini API",
+        "Plotly",
+        "Matplotlib"
+      ],
+      demoUrl:
+        "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_major-all-pythondeveloper-activity-7363890214680875008-Qnxk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEnsUiQB_YTfoPGfGHNVqrqejy1DZ8m39iY",
+      githubUrl:
+        "https://github.com/dhananjay9322/summer_internship_projects/tree/main/Menubase%20Project",
+      color: 'from-purple-500 to-pink-500',
+      image: "/all-in-one-dashboard.png"
     }
   ];
 
