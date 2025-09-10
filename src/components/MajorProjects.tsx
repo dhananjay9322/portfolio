@@ -18,28 +18,21 @@ const MajorProjects: React.FC = () => {
 
   const majorProjects: MajorProject[] = [
     {
-      title: "Cloud Infrastructure Automation",
-      description: "Built a comprehensive DevOps pipeline using AWS, Docker, and Kubernetes. Implemented CI/CD with GitHub Actions, automated deployment processes, and infrastructure monitoring with Prometheus and Grafana.",
-      tech: ["AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "Prometheus"],
-      demoUrl: "https://github.com/dhananjay9322",
-      githubUrl: "https://github.com/dhananjay9322",
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      title: "Microservices Architecture",
-      description: "Designed and implemented a scalable microservices architecture using Python Flask, Docker containers, and message queues. Features include load balancing, service discovery, and fault tolerance.",
-      tech: ["Python", "Flask", "Docker", "Redis", "Nginx", "PostgreSQL"],
-      demoUrl: "https://github.com/dhananjay9322",
-      githubUrl: "https://github.com/dhananjay9322",
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      title: "Real-time Data Processing System",
-      description: "Developed a high-performance data processing system using Apache Kafka, Python, and Elasticsearch. Handles millions of events per second with real-time analytics and visualization.",
-      tech: ["Apache Kafka", "Python", "Elasticsearch", "Kibana", "Redis", "Docker"],
-      demoUrl: "https://github.com/dhananjay9322",
-      githubUrl: "https://github.com/dhananjay9322",
-      color: 'from-green-500 to-emerald-500'
+      title: "CI/CD Pipeline for Flask Application (Jenkins & Docker)",
+      description:
+        "The DevoOps Project is a comprehensive DevOps pipeline designed to automate the deployment of a Python Flask application. Utilizing Jenkins for continuous integration and Docker for containerization, this project demonstrates the seamless integration of development and operations, ensuring efficient and reliable application delivery.",
+      tech: [
+        "Jenkins",
+        "Git",
+        "Docker",
+        "Python",
+        "Flask"
+      ],
+      demoUrl:
+        "https://www.linkedin.com/posts/dhananjay-kharat-4844222a7_devops-ci-jenkins-activity-7354772324555870208-R3rL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEnsUiQB_YTfoPGfGHNVqrqejy1DZ8m39iY",
+      githubUrl: "https://github.com/dhananjay9322/devoops.project",
+      color: 'from-blue-500 to-cyan-500',
+      image: "/cicd-pipeline.png"
     }
   ];
 
@@ -196,15 +189,25 @@ const MajorProjects: React.FC = () => {
                     {/* Project visualization */}
                     <div className="lg:w-80 lg:flex-shrink-0">
                       <motion.div
-                        className={`w-full h-48 lg:h-64 rounded-2xl bg-gradient-to-br ${project.color} flex items-center justify-center shadow-2xl`}
-                        whileHover={{ scale: 1.05, rotateY: 5 }}
+                        className={`w-full h-48 lg:h-64 rounded-2xl bg-gray-900/60 flex items-center justify-center shadow-2xl overflow-hidden border border-gray-700`}
+                        whileHover={{ scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       >
-                        <div className="text-white text-center p-6">
-                          <div className="text-6xl mb-4">🚀</div>
-                          <h4 className="text-xl font-bold mb-2">{project.title}</h4>
-                          <p className="text-sm opacity-90">Major Project</p>
-                        </div>
+                        {project.image ? (
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${project.color}`}>
+                            <div className="text-white text-center p-6">
+                              <h4 className="text-xl font-bold mb-2">{project.title}</h4>
+                              <p className="text-sm opacity-90">Major Project</p>
+                            </div>
+                          </div>
+                        )}
                       </motion.div>
                     </div>
                   </div>
