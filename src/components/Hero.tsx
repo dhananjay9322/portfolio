@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
           <div className="flex-1 flex justify-center md:justify-end items-start md:items-start mb-8 md:mb-0">
             <div className="flex justify-center items-center mt-10 mb-6">
               <img
-                src="/my.jpg"
+                src="/my.jpeg"
                 alt="Dhananjay Kharat"
                 className="w-64 md:w-80 lg:w-[400px] h-auto object-cover rounded-xl shadow-lg max-w-full"
               />

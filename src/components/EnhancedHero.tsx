@@ -249,7 +249,7 @@ const EnhancedHero: React.FC = () => {
                 className="absolute -inset-4 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-full opacity-20 blur-xl"
               />
               <motion.img
-                src="/my.jpg"
+                src="/my.jpeg"
                 alt="Dhananjay Kharat"
                 className="w-80 lg:w-96 h-auto object-cover rounded-2xl shadow-2xl relative z-10"
                 whileHover={{ scale: 1.05 }}
